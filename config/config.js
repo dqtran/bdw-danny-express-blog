@@ -19,7 +19,9 @@ var config = {
       name: 'bdw-blog'
     },
     port: 3000,
-    db: 'mongodb://localhost/bdw-blog-test'
+    // db: 'mongodb://localhost/bdw-blog-test'
+    db: 
+      'mongodb://heroku_app35436188:9ujrhbhpp6qnjdnrf35v35jekd@ds059661.mongolab.com:59661/heroku_app35436188'
   },
 
   production: {
@@ -28,7 +30,9 @@ var config = {
       name: 'bdw-blog'
     },
     port: 3000,
-    db: 'mongodb://localhost/bdw-blog-production'
+    // db: 'mongodb://localhost/bdw-blog-production'
+    db: 
+      'mongodb://heroku_app35436188:9ujrhbhpp6qnjdnrf35v35jekd@ds059661.mongolab.com:59661/heroku_app35436188'
   }
 };
 
