@@ -9,6 +9,7 @@ var ArticleSchema = new Schema({
   description: String,
   categories: Array,
   author: String,
+  guid: String,
   createdAt: { type: Date, default: Date.now},
   updatedAt: { type: Date, default: Date.now },
 });
