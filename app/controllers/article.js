@@ -75,9 +75,9 @@ router.post('/:id', function (req, res, next) {
 /****************************************/
 /**************** Create ****************/
 /****************************************/
-router.get('/create/:id', function (req, res, next){
-		var id = req.params.id
-		Article.findOne({_id: id}, function(err, article){
+router.get('/', function (req, res, next){
+		// var id = req.params.id
+		Article.find({}, function(err, article){
     	if(err) return next(err)
 			res.render('article/create', {
 				title: 'BDW - Blog',
