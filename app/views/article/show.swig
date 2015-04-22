@@ -1,13 +1,16 @@
 {% extends '../layout.swig' %}
 
 {% block content %}
+  <div class="contents">
+    {# {% for article in articles %} #}
+	    <a target="blank" href="{{article.url}}">
+	    	<h4>{{article.title}}</h4>
+	    </a>
+	    <h5>{{article.description|safe}}</h5>
+	    <h6>{{article.createdAt|date('F jS, Y')}}</h6>
 
-    {% for article in articles %}
-    <a target="blank" href="{{article.url}}"><h2>{{article.title}}</h2></a>
-    <p>{{article.guid}}</p>
-    <h3>{{article.description}}</h3>
-    <h4>{{article.author}}</h4>
-
-     {% endfor %}
-
+    {# {% endfor %} #}
+    <a class="button button-primary" href="/article">back</a>
+		<a class="button" href="/article/{{ article.id }}/edit">edit</a>
+  </div>
 {% endblock %}
