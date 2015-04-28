@@ -10,6 +10,24 @@ module.exports = function (app) {
 
 
 /****************************************/
+/**************** Create ****************/
+/****************************************/
+router.get('/create', function (req, res, next){
+		res.render('article/create', {
+			title: 'Create a Post',
+			article: new Article({})
+		});
+});
+
+router.post('/create', function (req, res, next){
+	console.log(req.body);
+	Article.create(req.body, function(err, article){
+		if(err) return next(err)
+ 		res.redirect('/article');
+	});
+});
+
+/****************************************/
 /**************** List ******************/
 /****************************************/
 router.get('/', function (req, res, next) {
@@ -17,7 +35,7 @@ router.get('/', function (req, res, next) {
 		console.log('articles', articles);
 		if(err) return next(err)
 		res.render('article/list', {
-		      title: 'My Medium Posts',
+		      title: 'Danny Medium Posts',
 		      articles: articles
 		});
 	});
@@ -52,7 +70,7 @@ router.get('/:id/edit', function (req, res, next) {
     Article.findOne({ _id: id }, function(err, article){
     		if(err) return next(err)
         res.render('article/edit', { // REMINDER: render vs. json
-          title: 'BDW - Blog',
+          title: 'Edit Post',
           article: article // return all articles to the list.swig
         });
     });
@@ -68,40 +86,16 @@ router.post('/:id', function (req, res, next) {
         console.log(article);
         if(err) return next(err);
       	res.redirect('/article/' + article.id);
-      	// req.flash('success', 'Updated!');
     });
 });
 
 /****************************************/
-/**************** Create ****************/
-/****************************************/
-router.get('/', function (req, res, next){
-		// var id = req.params.id
-		Article.find({}, function(err, article){
-    	if(err) return next(err)
-			res.render('article/create', {
-				title: 'BDW - Blog',
-				article: article
-			});
-	});
-});
-
-router.post('/create', function (req, res, next){
-		console.log(req.body);
-		Article.create(req.body, function(err, article){
-			if(err) return next(err)
-   		res.redirect('/article' + article.id);
-	});
-});
-
-
-/****************************************/
 /*************** Database ***************/
 /****************************************/
-router.get('/bootstrap', function (req, res, next) {
-	console.log(posts)
-	Article.create(posts.posts, function(err, articles){
-			if(err) return next(err)
-      res.send(articles);
-	});
-});
+// router.get('/bootstrap', function (req, res, next) {
+// 	console.log(posts)
+// 	Article.create(posts.posts, function(err, articles){
+// 			if(err) return next(err)
+//       res.send(articles);
+// 	});
+// });

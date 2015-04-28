@@ -2,6 +2,7 @@
 
 {% block content %}
 
+<h2>{{title}}</h2>
 <form action="/article/{{ article.id }}" method="post">
 	<label for="title">Title</label>
 	<input class="u-full-width" type="title" value="{{ article.title }}" id="title" name="title">
