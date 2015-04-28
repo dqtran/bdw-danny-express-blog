@@ -3,7 +3,7 @@
 {% block content %}
 
 <h2>{{title}}</h2>
-<form action="/article/{{ article.id }}" method="post">
+<form action="/article/{{ article.id }}" method="post" onsubmit="return confirm('Are you sure?')">
 	<label for="title">Title</label>
 	<input class="u-full-width" type="title" value="{{ article.title }}" id="title" name="title">
 
@@ -21,6 +21,9 @@
 
 	<input class="button-primary" type="submit" value="Submit">
 	<a class="button" href="/article/{{ article.id }}">back</a>
+</form>
+<form action="/article/{{ article.id }}/delete" method="post" onsubmit="return confirm('Are you sure?')">
+	<input class="button" type="submit" value="delete">
 </form>
 
 {% endblock %}

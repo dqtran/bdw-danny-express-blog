@@ -28,7 +28,7 @@ router.post('/create', function (req, res, next){
 });
 
 /****************************************/
-/**************** List ******************/
+/************ List of Posts *************/
 /****************************************/
 router.get('/', function (req, res, next) {
 	Article.find({}, function(err, articles) {
@@ -43,7 +43,7 @@ router.get('/', function (req, res, next) {
 
 
 /****************************************/
-/**************** Show ******************/
+/************ Show a post ***************/
 /****************************************/
 router.get('/:id', function (req, res, next) {
 	var id = req.params.id;
@@ -87,6 +87,21 @@ router.post('/:id', function (req, res, next) {
         if(err) return next(err);
       	res.redirect('/article/' + article.id);
     });
+});
+
+
+/****************************************/
+/*************** Delete *****************/
+/****************************************/
+router.post('/:id/delete', function (req, res, next) {
+		var id = req.params.id;
+		console.log(req.body);
+
+		Article.findOneAndRemove({ _id: id}, function(err, article){
+				console.log(article);
+				if(err) return next(err);
+				res.redirect('/article');
+		});
 });
 
 /****************************************/

@@ -12,5 +12,8 @@
     {# {% endfor %} #}
     <a class="button button-primary" href="/article">back</a>
 		<a class="button" href="/article/{{ article.id }}/edit">edit</a>
+		<form action="/article/{{ article.id }}/delete" method="post" onsubmit="return confirm('Are you sure?')">
+			<input class="button" type="submit" value="delete">
+		</form>
   </div>
 {% endblock %}
